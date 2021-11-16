@@ -8,7 +8,7 @@ larguratela = 700
 alturatela = 700
 nome = "Nokia Reminder"
 x = larguratela/2
-y = 0
+y = alturatela/2
  
 tela = pygame.display.set_mode((larguratela, alturatela))
 pygame.display.set_caption(nome)
@@ -22,12 +22,32 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             exit()
- 
+        ...
+
+        if event.type == KEYDOWN:
+            if event.key == K_a:
+                x = x - 35
+            if event.key == K_d:
+                x = x + 35
+            if event.key == K_w:
+                y = y - 35
+            if event.key == K_s:
+                y = y + 35
+
+        if pygame.key.get_pressed()[K_a]:
+            x = x - 35
+        if pygame.key.get_pressed()[K_d]:
+            x = x + 35    
+        if pygame.key.get_pressed()[K_w]:
+            y = y - 35
+        if pygame.key.get_pressed()[K_s]:
+            y = y + 35 
+   
+   
     pygame.draw.rect(tela, (255,0,0), (x,y,50,60))
  
-    if y >= alturatela:
-        y = 0
- 
-    y = y + 1
+    
  
     pygame.display.update
+
+    
