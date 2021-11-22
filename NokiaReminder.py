@@ -5,11 +5,18 @@ from random import randint
 
 pygame.init() #Iniciando funções do pygame
 
+pygame.mixer.music.set_volume(0.2)
+musica_de_fundo = pygame.mixer.music.load('BoxCat Games - Nameless_ the Hackers Title Screen.mp3')
+pygame.mixer.music.play(-1)
+
+barulho_colisao = pygame.mixer.Sound('smw_1-up.wav')
+barulho_colisao.set_volume(1)
+
 larguratela = 700
 alturatela = 700
 nome = "Nokia Reminder"
-x = larguratela/2
-y = alturatela/2
+x = int(larguratela/2)
+y = int(alturatela/2)
 
 x_azul = randint(50, 650)
 y_azul = randint(60, 640)
@@ -59,6 +66,7 @@ while True:
         x_azul = randint(50, 650)
         y_azul = randint(60, 640)
         pontos = pontos + 1
+        barulho_colisao.play()
 
     tela.blit(textofinal, (450, 40))
 
