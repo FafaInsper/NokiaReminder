@@ -42,22 +42,22 @@ while True:
 
         if event.type == KEYDOWN:
             if event.key == K_a:
-                x = x - 5
+                x = x - 2.5
             if event.key == K_d:
-                x = x + 5
+                x = x + 2.5
             if event.key == K_w:
-                y = y - 5
+                y = y - 2.5
             if event.key == K_s:
-                y = y + 5
+                y = y + 2.5
 
     if pygame.key.get_pressed()[K_a]:
-        x = x - 5
+        x = x - 2.5
     if pygame.key.get_pressed()[K_d]:
-        x = x + 5    
+        x = x + 2.5    
     if pygame.key.get_pressed()[K_w]:
-        y = y - 5
+        y = y - 2.5
     if pygame.key.get_pressed()[K_s]:
-        y = y + 5 
+        y = y + 2.5
 
     ret_vermleho = pygame.draw.rect(tela, (255,0,0), (x,y,50,60)) 
     ret_azul = pygame.draw.rect(tela, (0, 0, 255), (x_azul, y_azul, 50, 60))
@@ -67,6 +67,8 @@ while True:
         y_azul = randint(60, 640)
         pontos = pontos + 1
         barulho_colisao.play()
+
+        
 
     tela.blit(textofinal, (450, 40))
 
