@@ -15,11 +15,11 @@ barulho_colisao.set_volume(1)
 larguratela = 700
 alturatela = 700
 nome = "Nokia Reminder"
-x = int(larguratela/2)
-y = int(alturatela/2)
+x_cobra = int(larguratela/2)
+y_cobra = int(alturatela/2)
 
-x_azul = randint(50, 650)
-y_azul = randint(60, 640)
+x_maca = randint(50, 650)
+y_maca = randint(60, 640)
 
 fonte = pygame.font.SysFont('comic sans', 40, True, False)
 pontos = 0
@@ -28,12 +28,19 @@ tela = pygame.display.set_mode((larguratela, alturatela))
 pygame.display.set_caption(nome)
 clock = pygame.time.Clock()
 
+lista_cobra = []
+
+def aumento_cobra(lista_cobra):
+    for xey in lista_cobra:
+        #xey = [x, y]
+        pygame.draw.rect(tela, (0, 255, 0), (xey[0], xey[1], 20, 20))
+
 while True:
     clock.tick(280)
-    tela.fill((0, 0, 0))
+    tela.fill((255, 255, 255))
 
     mensagem = f'Pontos: {pontos}'
-    textofinal = fonte.render(mensagem, True, (255, 255, 255))
+    textofinal = fonte.render(mensagem, True, (0, 0, 0))
 
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -42,33 +49,38 @@ while True:
 
         if event.type == KEYDOWN:
             if event.key == K_a:
-                x = x - 2.5
+                x_cobra = x_cobra - 2.5
             if event.key == K_d:
-                x = x + 2.5
+                x_cobra = x_cobra + 2.5
             if event.key == K_w:
-                y = y - 2.5
+                y_cobra = y_cobra - 2.5
             if event.key == K_s:
-                y = y + 2.5
+                y_cobra = y_cobra    + 2.5
 
     if pygame.key.get_pressed()[K_a]:
-        x = x - 2.5
+        x_cobra = x_cobra - 2.5
     if pygame.key.get_pressed()[K_d]:
-        x = x + 2.5    
+        x_cobra = x_cobra + 2.5    
     if pygame.key.get_pressed()[K_w]:
-        y = y - 2.5
+        y_cobra = y_cobra - 2.5
     if pygame.key.get_pressed()[K_s]:
-        y = y + 2.5
+        y_cobra = y_cobra + 2.5
 
-    ret_vermleho = pygame.draw.rect(tela, (255,0,0), (x,y,50,60)) 
-    ret_azul = pygame.draw.rect(tela, (0, 0, 255), (x_azul, y_azul, 50, 60))
+    cobra = pygame.draw.rect(tela, (0,255,0), (x_cobra,y_cobra,30,30)) 
+    maca = pygame.draw.rect(tela, (255, 0, 0), (x_maca, y_maca, 30, 30))
    
-    if ret_vermleho.colliderect(ret_azul):
-        x_azul = randint(50, 650)
-        y_azul = randint(60, 640)
+    if cobra.colliderect(maca):
+        x_maca = randint(50, 650)
+        y_maca = randint(60, 640)
         pontos = pontos + 1
         barulho_colisao.play()
 
-        
+    lista_cabeca = []
+    lista_cabeca.append(x_cobra)
+    lista_cabeca.append(y_cobra)
+    lista_cobra.append(lista_cabeca)    
+
+    aumento_cobra(lista_cobra)
 
     tela.blit(textofinal, (450, 40))
 
