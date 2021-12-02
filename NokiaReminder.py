@@ -46,10 +46,10 @@ def aumento_cobra(lista_cobra):
 
 while True:
     clock.tick(280)
-    tela.fill((255, 255, 255))
+    tela.fill((0, 0, 0))
 
     mensagem = f'Pontos: {pontos}'
-    textofinal = fonte.render(mensagem, True, (0, 0, 0))
+    textofinal = fonte.render(mensagem, True, (255, 255, 255))
 
     for event in pygame.event.get():
         if event.type == QUIT:
@@ -115,7 +115,7 @@ while True:
     
     while morte:
         mensagem_morte = f'Game Over! Você fez {pontos} pontos!'
-        fontemorte = pygame.font.SysFont('comic sans', 20, True, False)
+        fontemorte = pygame.font.SysFont('comic sans', 35, True, False)
         textofinalmorte = fontemorte.render(mensagem_morte, True, (0,0,0))
         ret_texto = textofinalmorte.get_rect()
         tela.fill((255, 255, 255))
