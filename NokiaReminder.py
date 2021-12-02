@@ -85,13 +85,13 @@ while True:
     x_cobra = x_cobra + x_controle
     y_cobra = y_cobra + y_controle
 
-    cobra = pygame.draw.rect(tela, (0,255,0), (x_cobra,y_cobra,30,30)) 
+    cobra = pygame.draw.rect(tela, (0,255,0), (x_cobra,y_cobra,20,20)) 
     maca = pygame.draw.rect(tela, (255, 0, 0), (x_maca, y_maca, 30, 30))
    
     if cobra.colliderect(maca):
         x_maca = randint(50, 650)
         y_maca = randint(60, 640)
-        velocidade = velocidade + 0.05
+        velocidade = velocidade + 0.03
         pontos = pontos + 1
         barulho_colisao.play()
         comprimento_inicial = comprimento_inicial + 10
@@ -112,7 +112,6 @@ while True:
         morte = True
     if y_cobra < 0:
         morte = True
-
     
     while morte:
         mensagem_morte = f'Game Over! Você fez {pontos} pontos!'
